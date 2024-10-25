@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 284174091977091101}
-  - component: {fileID: 672876868348222969}
+  - component: {fileID: 5894907898504284473}
   m_Layer: 0
   m_Name: Torret
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 6562682866030207328}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &672876868348222969
+--- !u!114 &5894907898504284473
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e953e1159ab6e4191432bcdcf27831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretRotationPoint: {fileID: 6562682866030207328}
-  enemymask:
+  turretRotationPoint: {fileID: 6025473005611938356}
+  targetingrange: 3
+  enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  bulletprefab: {fileID: 1419843104296201822, guid: 14eeaf5532e6f504a9ad70169739a345, type: 3}
-  firingpoint: {fileID: 4540071915398749790}
-  targetingrange: 3
+  bulletPrefab: {fileID: 1419843104296201822, guid: 14eeaf5532e6f504a9ad70169739a345, type: 3}
+  firingPoint: {fileID: 4540071915398749790}
   rotationspeed: 200
   bps: 1
 --- !u!1 &1846726280631181772
