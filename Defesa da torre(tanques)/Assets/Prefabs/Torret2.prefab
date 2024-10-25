@@ -220,6 +220,9 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
+  enemymaskinvisible:
+    serializedVersion: 2
+    m_Bits: 128
   bulletPrefab: {fileID: 4793858228297516437, guid: 17c6a922cefcb6541b17b84cb2a8bf88, type: 3}
   firingPoint: {fileID: 3374386772033989520}
   rotationspeed: 200
@@ -237,16 +240,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretRotationPoint: {fileID: 587403978742152223}
-  targetingrange: 7
+  targetingrange: 5
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
+  enemymaskinvisible:
+    serializedVersion: 2
+    m_Bits: 0
   bulletPrefab: {fileID: 4793858228297516437, guid: 17c6a922cefcb6541b17b84cb2a8bf88, type: 3}
   firingPoint: {fileID: 3374386772033989520}
   rotationspeed: 200
   bps: 0.5
   aps: 4
   FreezeTime: 0.5
+  enemymaskinvisible:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7205898687090372475
 GameObject:
   m_ObjectHideFlags: 0

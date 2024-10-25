@@ -47,14 +47,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretRotationPoint: {fileID: 6025473005611938356}
-  targetingrange: 3
+  targetingrange: 4
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
   bulletPrefab: {fileID: 1419843104296201822, guid: 14eeaf5532e6f504a9ad70169739a345, type: 3}
   firingPoint: {fileID: 4540071915398749790}
   rotationspeed: 200
-  bps: 1
+  bps: 2
 --- !u!1 &1846726280631181772
 GameObject:
   m_ObjectHideFlags: 0
