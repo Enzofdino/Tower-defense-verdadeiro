@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private int hitPoints = 3;
+    [SerializeField] private int currencyWorth = 50;
 
     private bool isDestroyed = false;
     public void TakeDamage(int dmg)
@@ -13,9 +14,8 @@ public class Health : MonoBehaviour
         hitPoints -= dmg;
 
         if(hitPoints <= 0 && !isDestroyed)
-        {
-
-            EnemySpawner.onEnemyDestroy.Invoke();
+        {   EnemySpawner.onEnemyDestroy.Invoke();
+            LevelManager.instance.IncreaseCurrency(currencyWorth);
             isDestroyed = true;
             Destroy(gameObject);
         }
