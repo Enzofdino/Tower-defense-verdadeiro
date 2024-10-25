@@ -2178,7 +2178,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 284174091977091101, guid: 64a10110abbb3a44f8941ffdffdca7a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.4773006
+      value: 4.4773006
       objectReference: {fileID: 0}
     - target: {fileID: 284174091977091101, guid: 64a10110abbb3a44f8941ffdffdca7a7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2219,6 +2219,22 @@ PrefabInstance:
     - target: {fileID: 1049239408305843446, guid: 64a10110abbb3a44f8941ffdffdca7a7, type: 3}
       propertyPath: m_Name
       value: Torret
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960001665670673722, guid: 64a10110abbb3a44f8941ffdffdca7a7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960001665670673722, guid: 64a10110abbb3a44f8941ffdffdca7a7, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2060463639
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292811803564173728, guid: 64a10110abbb3a44f8941ffdffdca7a7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292811803564173728, guid: 64a10110abbb3a44f8941ffdffdca7a7, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2060463639
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13722,7 +13738,6 @@ GameObject:
   - component: {fileID: 1817659011}
   - component: {fileID: 1817659010}
   - component: {fileID: 1817659012}
-  - component: {fileID: 1817659013}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -13795,20 +13810,6 @@ MonoBehaviour:
   enemiesPerSecond: 0.3
   timebetweenWaves: 5
   difficultyScallingFactor: 0.75
---- !u!114 &1817659013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817659009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0cbc315d9763bf4096ee01cf01db51c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerPrefabs:
-  - {fileID: 1049239408305843446, guid: 64a10110abbb3a44f8941ffdffdca7a7, type: 3}
 --- !u!1001 &1826739733
 PrefabInstance:
   m_ObjectHideFlags: 0
