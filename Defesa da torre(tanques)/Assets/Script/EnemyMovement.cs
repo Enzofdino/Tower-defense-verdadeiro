@@ -1,45 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
-{
-    [Header("References")]
-    [SerializeField] private Rigidbody2D rb;
-    [Header("Attibutes")]
-    [SerializeField] private float movespeed = 2f;
+public class EnemyMovement : MonoBehaviour 
 
-    private Transform target;
-    private int pathindex = 0;
+{
+    [SerializeField] private Rigidbody2D rb;    
+
+    [SerializeField] private float moveSpeed = 2f;    
+
+    private Transform target;    
+
+    private int pathIndex = 0;   
+
+    private float baseSpeed;    
+
+   
     private void Start()
     {
-        target = LevelManager.instance.Caminho[pathindex];
+        baseSpeed = moveSpeed; 
+        target = LevelManager.instance.path[pathIndex];
     }
+
+  
     private void Update()
     {
-        if(Vector2.Distance(target.position, transform.position) <= 0.1f)
+        if (Vector2.Distance(target.position, transform.position) <= 0.1f)         
         {
-            pathindex++;
+            pathIndex++; 
 
-           
-            if (pathindex == LevelManager.instance.Caminho.Length)
+            if (pathIndex == LevelManager.instance.path.Length)            
+
             {
                 EnemySpawner.onEnemyDestroy.Invoke();
-                Destroy(gameObject);
+                Destroy(gameObject); 
                 return;
-
             }
             else
             {
-
-                target = LevelManager.instance.Caminho[pathindex];
+                target = LevelManager.instance.path[pathIndex];
             }
         }
-
     }
-    private void FixedUpdate()
+    private void FixedUpdate()   
+
     {
-        Vector2 direction = (target.position - transform.position).normalized;
-        rb.velocity = direction * movespeed;
+        Vector2 direction = (target.position - transform.position).normalized;         
+
+        rb.velocity = direction * moveSpeed;
+    }
+    public void UpdateSpeed(float newSpeed)   
+
+    {
+        moveSpeed = newSpeed;
+    }
+    public void ResetSpeed()     
+
+    {
+        moveSpeed = baseSpeed; 
     }
 }

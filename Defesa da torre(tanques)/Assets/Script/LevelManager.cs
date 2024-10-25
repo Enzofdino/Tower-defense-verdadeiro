@@ -2,41 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class LevelManager : MonoBehaviour // Classe LevelManager: Gerencia informações relacionadas ao nível, como pontos de início e caminho dos inimigos.
 
-public class LevelManager : MonoBehaviour
 {
-    public static LevelManager instance;
+    public static LevelManager instance;     // Instância singleton da classe LevelManager.
 
-    public Transform startpoint;
-    public Transform[] Caminho;
+    public Transform startPoint;    // Ponto de início para onde os inimigos devem ser gerados.
 
-    public int currency;
-    private void Awake()
-    {
-        instance = this;
-    }
-    public void Start()
-    {
+    public Transform[] path;    // Array de pontos que definem o caminho que os inimigos devem seguir.
 
-        currency = 100;
-        
-    }
-    public void IncreaseCurrency(int amount)
+    private void Awake()    // Método chamado quando o objeto é inicializado.
+
     {
-        currency += amount;
-    }
-    public bool spendCurrency(int amount)
-    {
-        if(amount <= currency)
-        {
-            currency -= amount;
-            return true;
-        }
-        else
-        {
-            Debug.Log("voce não possui dinheiro para comprar a torreta");
-            return false;
-        }
-             
+        instance = this; // Inicializa a instância singleton.
     }
 }
