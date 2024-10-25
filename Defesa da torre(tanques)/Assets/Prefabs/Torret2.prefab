@@ -246,7 +246,7 @@ MonoBehaviour:
     m_Bits: 64
   enemymaskinvisible:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   bulletPrefab: {fileID: 4793858228297516437, guid: 17c6a922cefcb6541b17b84cb2a8bf88, type: 3}
   firingPoint: {fileID: 3374386772033989520}
   rotationspeed: 200

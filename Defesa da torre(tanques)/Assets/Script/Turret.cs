@@ -11,7 +11,7 @@ public class Turret : MonoBehaviour, Iatacavel
     [SerializeField] protected float targetingrange = 5f;
 
     [SerializeField] protected LayerMask enemyMask;
-    [SerializeField] protected LayerMask enemymaskinvisible;
+    
 
     [SerializeField] protected GameObject bulletPrefab;
 

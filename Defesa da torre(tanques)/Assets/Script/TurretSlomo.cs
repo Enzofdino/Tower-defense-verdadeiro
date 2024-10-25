@@ -10,7 +10,8 @@ public class TurretSlomo : Turret
     [SerializeField] private float aps = 4f;   
 
     [SerializeField] private float FreezeTime = 1f;
-    [SerializeField] protected LayerMask enemymaskinvisible;
+    
+
 
 
     private void Update()   
@@ -60,7 +61,7 @@ public class TurretSlomo : Turret
 
         if (target == null)
         {
-            Debug.LogWarning("Nenhum alvo detectado para rotacionar.");
+            //Debug.LogWarning("Nenhum alvo detectado para rotacionar.");
             return;
         }
 
