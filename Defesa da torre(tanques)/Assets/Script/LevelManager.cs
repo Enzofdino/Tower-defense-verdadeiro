@@ -24,9 +24,10 @@ public class LevelManager : MonoBehaviour
 
     public bool IncreaseCurrency(int amount)
     {
+        amount = 50;
         if(amount <= currency)
         {
-            currency -=amount;
+            currency +=amount;
             return true;
         }
         else

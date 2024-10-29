@@ -20,8 +20,8 @@ public class Plot : MonoBehaviour
     private void OnMouseDown()
     {
         if (tower != null) return;
-        GameObject towertobuild = BuildManager.Instance.GetselectedTower();
-        tower = Instantiate(towertobuild, transform.position, Quaternion.identity);
+        Tower towertobuild = BuildManager.Instance.GetselectedTower();
+        tower = Instantiate(towertobuild.prefab, transform.position, Quaternion.identity);
     }
     private void OnMouseEnter()
     {
