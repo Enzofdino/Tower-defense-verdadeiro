@@ -20,7 +20,15 @@ public class Plot : MonoBehaviour
     private void OnMouseDown()
     {
         if (tower != null) return;
+
         Tower towertobuild = BuildManager.Instance.GetselectedTower();
+        if(towertobuild.cost > LevelManager.instance.currency)
+        {
+            Debug.Log("you cant afford this");
+            return;
+
+        }
+        LevelManager.instance.SpendCurrency(towertobuild.cost);
         tower = Instantiate(towertobuild.prefab, transform.position, Quaternion.identity);
     }
     private void OnMouseEnter()

@@ -36,4 +36,18 @@ public class LevelManager : MonoBehaviour
             return false;
         }
     }
+    public bool SpendCurrency(int amount)
+    {
+        
+        if (amount <= currency)
+        {
+            currency -= amount;
+            return true;
+        }
+        else
+        {
+            Debug.Log("You do not have enough to purchase this item");
+            return false;
+        }
+    }
 }
