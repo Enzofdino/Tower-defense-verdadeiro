@@ -2,25 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour 
-
+public class Health : MonoBehaviour
 {
-    [SerializeField] protected float hitPoints = 2;
-    [SerializeField] private int currencyWorth = 50;
+    [SerializeField] protected float hitPoints = 2; // Pontos de vida do inimigo
+    [SerializeField] private int currencyWorth = 50; // Quantidade de moeda que o inimigo gera ao ser destruído
 
-    protected bool isDestroyed = false;    
+    protected bool isDestroyed = false; // Flag para verificar se o inimigo já foi destruído
 
-    public virtual void TakeDamage(float dmg)    
-
+    // Método para aplicar dano ao inimigo
+    public virtual void TakeDamage(float dmg)
     {
-        hitPoints -= dmg;
-        if (hitPoints <= 0 && !isDestroyed)       
-
+        hitPoints -= dmg; // Reduz os pontos de vida pelo dano recebido
+        if (hitPoints <= 0 && !isDestroyed)
         {
-            EnemySpawner.onEnemyDestroy.Invoke();
-            LevelManager.instance.IncreaseCurrency(1);
-            isDestroyed = true;
-            Destroy(gameObject);
+            EnemySpawner.onEnemyDestroy.Invoke(); // Notifica que um inimigo foi destruído
+            LevelManager.instance.IncreaseCurrency(1); // Aumenta a moeda do jogador
+            isDestroyed = true; // Marca o inimigo como destruído
+            Destroy(gameObject); // Remove o inimigo da cena
         }
     }
 }
