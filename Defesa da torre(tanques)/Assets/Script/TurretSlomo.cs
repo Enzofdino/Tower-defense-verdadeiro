@@ -9,7 +9,7 @@ public class TurretSlomo : Turret
 
     [SerializeField] private float aps = 4f;   
 
-    [SerializeField] private float FreezeTime = 1f;
+    [SerializeField] private float FreezeTime = 5f;
     
 
 
