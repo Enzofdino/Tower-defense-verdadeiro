@@ -22,19 +22,11 @@ public class LevelManager : MonoBehaviour
         currency = 100;
     }
 
-    public bool IncreaseCurrency(int amount)
+    public void IncreaseCurrency(int amount)
     {
         amount = 50;
-        if(amount <= currency)
-        {
             currency +=amount;
-            return true;
-        }
-        else
-        {
-            Debug.Log("You do not have enough to purchase this item");
-            return false;
-        }
+       
     }
     public bool SpendCurrency(int amount)
     {

@@ -3,54 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class TurretFire : Turret
-
+public class TurretHighDamage : Turret
 {
-    [SerializeField] private float burnDuration = 3f;       
+    [SerializeField] private float highDamage = 10f;  // Definindo o dano alto que a torre vai causar
 
-    [SerializeField] private float burnDamagePerSecond = 1f;    
-
-    public override void Atacar()    
-
+    public override void Atacar()
     {
-        if (target != null)        
-
+        if (target != null)
         {
+            Health enemyHealth = target.GetComponent<Health>();
 
-            Health enemyHealth = target.GetComponent<Health>();            
-
-            if (enemyHealth != null)            
-
+            if (enemyHealth != null)
             {
-
-                StartCoroutine(ApplyBurnDamage(enemyHealth));
+                enemyHealth.TakeDamage(highDamage);  // Aplica o dano alto diretamente
             }
         }
     }
-    private IEnumerator ApplyBurnDamage(Health enemyHealth)     
+}
 
+/*protected override void Shoot()
     {
-        float elapsedTime = 0f; 
-
-        while (elapsedTime < burnDuration) 
-        {
-            enemyHealth.TakeDamage(burnDamagePerSecond * Time.deltaTime);  
-            elapsedTime += Time.deltaTime; 
-            yield return null;   
-        }
-    }
-
-
-    protected override void Shoot()    
-
-    {
-        GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);        
+        GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
 
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
 
-        Atacar();       
-
+        Atacar();  // Chama o método Atacar para aplicar o dano alto
     }
-}
-
+}*/

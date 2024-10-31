@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 1
+  currencyWorth: 50
 --- !u!50 &8666382615794411048
 Rigidbody2D:
   serializedVersion: 4
