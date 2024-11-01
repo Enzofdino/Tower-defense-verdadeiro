@@ -28,11 +28,11 @@ public class Turret : MonoBehaviour, Iatacavel // Classe que representa uma torr
         // Método a ser implementado em subclasses.
     }
 
-    private void OnDrawGizmosSelected() // Método chamado para desenhar gizmos na cena para visualização.
+  /*  private void OnDrawGizmosSelected() // Método chamado para desenhar gizmos na cena para visualização.
     {
         Handles.color = Color.cyan; // Define a cor do gizmo.
         Handles.DrawWireDisc(transform.position, transform.forward, targetingrange); // Desenha um disco indicando o alcance de ataque da torre.
-    }
+    }*/
 
     private void Update() // Método chamado uma vez por quadro para atualizar o estado da torre.
     {
