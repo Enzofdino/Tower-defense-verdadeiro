@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public static Bullet instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     [Header("References")]
     [SerializeField] private Rigidbody2D rb; // Referência ao Rigidbody2D da bala
 
     [Header("Attributes")]
     [SerializeField] private float bulletSpeed = 5f; // Velocidade da bala
-    [SerializeField] private float bulletdamage = 1f; // Dano causado pela bala
+    [SerializeField] public float bulletdamage = 1f; // Dano causado pela bala
     [SerializeField] private float lifetime = 5f; // Tempo de vida da bala antes de ser destruída
 
     private Transform target; // Alvo que a bala deve seguir

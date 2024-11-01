@@ -54,7 +54,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7138648676298458160, guid: bc4ab065d6098c548a4f4beb8a348022, type: 3}
   firingPoint: {fileID: 8599509835903323868}
   rotationspeed: 10
-  bps: 1
+  bps: 0.2
   aps: 4
   FreezeTime: 1
 --- !u!1 &5485697763453921394

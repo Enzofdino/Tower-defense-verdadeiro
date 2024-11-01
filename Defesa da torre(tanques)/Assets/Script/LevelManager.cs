@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
     public Transform startPoint;    // Ponto inicial onde o jogador ou objeto começa no nível.
 
     public Transform[] path;    // Array contendo os pontos do caminho que o jogador ou objeto pode seguir.
-    public int currency;    // Quantidade de moeda ou pontos que o jogador possui.
+   [SerializeField] public int currency;    // Quantidade de moeda ou pontos que o jogador possui.
 
     private void Awake()    // Método chamado antes do Start, para inicializar a instância global.
     {
@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
 
     private void Start() // Método inicial que configura o estado do jogo quando ele começa.
     {
-        currency = 100; // Define o valor inicial da moeda para o jogador em 100.
+        currency = 500; // Define o valor inicial da moeda para o jogador em 100.
     }
 
     public void IncreaseCurrency(int amount) // Método que aumenta o valor da moeda.

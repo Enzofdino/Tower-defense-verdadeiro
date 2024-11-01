@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7195244282765582250}
   - component: {fileID: 8934993883822244720}
   m_Layer: 0
-  m_Name: Bullet strong fire
+  m_Name: Bullet Strong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8934993883822244720}
   bulletSpeed: 3
-  bulletdamage: 3
+  bulletdamage: 10
+  lifetime: 5
 --- !u!58 &7195244282765582250
 CircleCollider2D:
   m_ObjectHideFlags: 0

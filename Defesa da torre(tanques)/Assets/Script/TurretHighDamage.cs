@@ -6,8 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 // Classe que representa uma torre que causa alto dano
 public class TurretHighDamage : Turret
 {
-    [SerializeField] private float highDamage = 10f;  // Dano alto que a torre vai causar
-
+   
     public override void Atacar()
     {
         if (target != null)  // Verifica se há um alvo
@@ -16,7 +15,7 @@ public class TurretHighDamage : Turret
 
             if (enemyHealth != null)  // Verifica se o inimigo tem um componente de saúde
             {
-                enemyHealth.TakeDamage(highDamage);  // Aplica o dano alto
+                enemyHealth.TakeDamage(Bullet.instance.bulletdamage);  // Aplica o dano da bala
             }
         }
     }

@@ -20,24 +20,31 @@ public class TurretSlomo : Turret
             timeUntilFire = 0f; // Reseta o temporizador de ataque
         }
     }
+  
 
     private void FreezeEnemies()
     {
-        // Detecta inimigos dentro da área de alcance
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingrange, (Vector2)transform.position, 0f, enemyMask);
 
-        if (hits.Length > 0) // Se houver inimigos
+        if (hits.Length > 0)
         {
             for (int i = 0; i < hits.Length; i++)
             {
                 RaycastHit2D hit = hits[i];
-                EnemyMovement em = hit.transform.GetComponent<EnemyMovement>(); // Obtém o componente de movimentação do inimigo
+                EnemyMovement em = hit.transform.GetComponent<EnemyMovement>();
+                Health enemyHealth = hit.transform.GetComponent<Health>();
 
-                em.UpdateSpeed(0.5f); // Reduz a velocidade do inimigo
-                StartCoroutine(ResetEnemySpeed(em)); // Inicia a coroutine para resetar a velocidade
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage(0.1f); // Causa dano (ajuste o valor conforme necessário)
+                }
+
+                em.UpdateSpeed(0.5f); // Reduz a velocidade
+                StartCoroutine(ResetEnemySpeed(em));
             }
         }
     }
+
 
     private IEnumerator ResetEnemySpeed(EnemyMovement em)
     {
