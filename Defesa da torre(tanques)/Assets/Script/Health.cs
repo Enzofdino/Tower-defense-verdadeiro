@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
         if (hitPoints <= 0 && !isDestroyed)
         {
             EnemySpawner.onEnemyDestroy.Invoke(); // Notifica que um inimigo foi destruído
-            LevelManager.instance.IncreaseCurrency(1); // Aumenta a moeda do jogador
+            LevelManager.instance.IncreaseCurrency(currencyWorth); // Aumenta a moeda do jogador
             isDestroyed = true; // Marca o inimigo como destruído
             Destroy(gameObject); // Remove o inimigo da cena
         }

@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
 
     public void IncreaseCurrency(int amount) // Método que aumenta o valor da moeda.
     {
-        amount = 50; // Define o valor da moeda a ser adicionado como 50.
+        
         currency += amount; // Adiciona a quantidade definida de moeda ao total atual.
     }
 
