@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] protected float hitPoints = 2; // Pontos de vida do inimigo
+    public static Health instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+   
+   
+    [SerializeField] public float hitPoints = 10; // Pontos de vida do inimigo
     [SerializeField] private int currencyWorth = 50; // Quantidade de moeda que o inimigo gera ao ser destruído
 
     protected bool isDestroyed = false; // Flag para verificar se o inimigo já foi destruído
@@ -21,4 +29,5 @@ public class Health : MonoBehaviour
             Destroy(gameObject); // Remove o inimigo da cena
         }
     }
+  
 }

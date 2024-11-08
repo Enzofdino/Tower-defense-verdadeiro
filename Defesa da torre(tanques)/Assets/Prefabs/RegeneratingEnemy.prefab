@@ -101,7 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a058e8db1c5159943a2df266500a1a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 3
+  currentHealth: 10
+  maxHealth: 10
+  baseHitPoints: 30
+  hitPoints: 30
+  currencyWorth: 60
 --- !u!114 &3221278052579269138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddcc4e8314075e741ab0c98ca570b0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 0
+  baseHitPoints: 2
   hitPoints: 3
+  currencyWorth: 50
   regenerationRate: 1
   maxHitPoints: 5
 --- !u!58 &8867940963253648232
