@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
     public Transform[] path;    // Array contendo os pontos do caminho que o jogador ou objeto pode seguir.
    [SerializeField] public int currency;    // Quantidade de moeda ou pontos que o jogador possui.
 
+    public GameObject gameOver; // Tela de Game Over no inspector
+
     private void Awake()    // Método chamado antes do Start, para inicializar a instância global.
     {
         instance = this; // Define esta instância como a instância global da classe.
@@ -39,5 +41,13 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
             Debug.Log("You do not have enough to purchase this item"); // Mensagem de aviso caso o jogador não tenha moeda suficiente.
             return false; // Retorna falso se a transação falhou.
         }
+    }
+    public void ShowGameOverScreen()
+    {
+        if (gameOver != null)
+        {
+            gameOver.SetActive(true); // Exibe a tela de Game Over
+        }
+        Time.timeScale = 0; // Pausa o jogo ao exibir o Game Over
     }
 }

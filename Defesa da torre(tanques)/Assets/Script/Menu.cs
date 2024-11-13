@@ -6,6 +6,7 @@ using UnityEngine;
 public class Menu : MonoBehaviour // Classe que controla o menu do jogo, incluindo a exibição de informações como o valor atual de moedas.
 {
     [Header("References")]
+    [SerializeField] private TextMeshProUGUI HealthBase;
     [SerializeField] TextMeshProUGUI currencyUI; // Referência ao componente TextMeshProUGUI para mostrar o valor da moeda.
     [SerializeField] Animator animator; // Referência ao componente Animator para controlar as animações do menu.
 
@@ -25,5 +26,9 @@ public class Menu : MonoBehaviour // Classe que controla o menu do jogo, incluin
     public void SetTower() // Método reservado para definir uma torre (implementação futura).
     {
         // Método a ser implementado.
+    }
+    public void Onhealth()
+    {
+        HealthBase.text = BaseHealth.instance.maxHealth.ToString();
     }
 }

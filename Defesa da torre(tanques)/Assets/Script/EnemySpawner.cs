@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,11 +18,17 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
     [SerializeField] private float difficultyScallingFactor = 0.75f; // Fator de escala da dificuldade, aumentando o número de inimigos por onda.
     [SerializeField] private float healthIncreasePerWave = 1.2f; // Fator de aumento de vida dos inimigos por onda.
 
+    public Transform spawnPoint;   // Ponto de spawn dos inimigos
+    public Transform endPoint;     // Ponto final ou base
+
+
+
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent(); // Evento acionado quando um inimigo é destruído.
 
     private int currentwave = 1; // Contador da onda atual.
     private float timesinceLastSpawn; // Tempo decorrido desde o último inimigo gerado.
+    [SerializeField] private int damageToBase = 10; // Dano causado à base
     private int enemiesAlive; // Número de inimigos vivos atualmente no jogo.
     private int enemiesLeftToSpawn; // Número de inimigos restantes para aparecer na onda atual.
     private bool isSpawning = false; // Controla se os inimigos estão sendo gerados.
@@ -98,6 +105,20 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
         if (enemyHealth != null)
         {
             enemyHealth.hitPoints *= Mathf.Pow(healthIncreasePerWave, currentwave - 1);
+        }
+    }
+
+    public void DealDamageIfReachedEnd(GameObject enemy)
+    {
+        if (Vector3.Distance(enemy.transform.position, endPoint.position) < 0.1f)
+        {
+            // Aplica dano à base
+            BaseHealth baseHealth = endPoint.GetComponent<BaseHealth>();
+            if (baseHealth != null)
+            {
+                baseHealth.TakeDamage(damageToBase);
+            }
+            Destroy(enemy); // Destrói o inimigo ao chegar ao final
         }
     }
 

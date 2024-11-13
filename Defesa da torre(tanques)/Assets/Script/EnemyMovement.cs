@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -41,6 +42,8 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 direction = (target.position - transform.position).normalized; // Calcula a direção
         rb.velocity = direction * moveSpeed; // Move o inimigo
+   
+    
     }
 
     public void UpdateSpeed(float newSpeed) // Atualiza a velocidade do inimigo
@@ -52,4 +55,5 @@ public class EnemyMovement : MonoBehaviour
     {
         moveSpeed = baseSpeed;
     }
+ 
 }

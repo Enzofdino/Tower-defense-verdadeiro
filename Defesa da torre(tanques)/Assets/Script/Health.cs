@@ -10,8 +10,7 @@ public class Health : MonoBehaviour
     {
         instance = this;
     }
-   
-   
+
     [SerializeField] public float hitPoints = 10; // Pontos de vida do inimigo
     [SerializeField] private int currencyWorth = 50; // Quantidade de moeda que o inimigo gera ao ser destruído
 
@@ -30,4 +29,5 @@ public class Health : MonoBehaviour
         }
     }
   
+
 }
