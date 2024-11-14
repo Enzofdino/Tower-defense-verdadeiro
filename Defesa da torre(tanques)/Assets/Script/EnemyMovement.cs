@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb; // Rigidbody do inimigo
     [SerializeField] private float moveSpeed = 2f; // Velocidade de movimento do inimigo
+    [SerializeField] private int damageToBase = 10; // Dano causado à base
 
     private Transform target; // Alvo atual
     private int pathIndex = 0; // Índice do caminho
@@ -28,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
             if (pathIndex == LevelManager.instance.path.Length) // Se chegou ao final do caminho
             {
                 EnemySpawner.onEnemyDestroy.Invoke(); // Notifica que o inimigo foi destruído
+                DealDamageToBase(); // Causa dano à base
                 Destroy(gameObject); // Remove o inimigo da cena
                 return;
             }
@@ -44,6 +46,15 @@ public class EnemyMovement : MonoBehaviour
         rb.velocity = direction * moveSpeed; // Move o inimigo
    
     
+    }
+
+    private void DealDamageToBase() // Método para causar dano à base
+    {
+        BaseHealth baseHealth = LevelManager.instance.startPoint.GetComponent<BaseHealth>(); // Obtém o componente BaseHealth da base
+        if (baseHealth != null)
+        {
+            baseHealth.TakeDamage(damageToBase); // Aplica o dano à base
+        }
     }
 
     public void UpdateSpeed(float newSpeed) // Atualiza a velocidade do inimigo
