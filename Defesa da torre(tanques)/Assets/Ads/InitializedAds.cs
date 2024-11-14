@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class AdsManager : MonoBehaviour,IUnityAdsInitializationListener
+public class InitializedAds : MonoBehaviour,IUnityAdsInitializationListener
 {
     [SerializeField] private string androidGameId;
     [SerializeField] private string iosGameId;
@@ -9,7 +9,16 @@ public class AdsManager : MonoBehaviour,IUnityAdsInitializationListener
 
     private string gameId;
 
-    
+    public void OnInitializationComplete()
+    {
+        Debug.Log("Ads Iniialized");
+    }
+
+    public void OnInitializationFailed(UnityAdsInitializationError error, string message)
+    {
+        
+    }
+
     private void Awake()
     {
       #if UNITY_IOS
@@ -25,15 +34,7 @@ public class AdsManager : MonoBehaviour,IUnityAdsInitializationListener
             Advertisement.Initialize(gameId, isTesting, this);
         }
 
-        public void OnInitializationComplete()
-        {
-            Debug.Log("Ads Initialized");
-        }
-
-        public void OnInitializationFailed(UnityAdsInitializationError error, string message)
-        {
-          
-        }
+       
 
 
 

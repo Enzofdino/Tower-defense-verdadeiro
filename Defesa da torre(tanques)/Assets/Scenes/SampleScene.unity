@@ -14381,6 +14381,115 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 38151607371883563, guid: ff8078cae20cc7243bf9e6deab017ea9, type: 3}
   m_PrefabInstance: {fileID: 12707560}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1659762239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659762245}
+  - component: {fileID: 1659762244}
+  - component: {fileID: 1659762243}
+  - component: {fileID: 1659762242}
+  - component: {fileID: 1659762241}
+  - component: {fileID: 1659762240}
+  m_Layer: 0
+  m_Name: AdsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1659762240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659762239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e3138bf8e30a6408818f1ce001042e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  androidAdUnitId: 
+  iosAdUnitId: 
+--- !u!114 &1659762241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659762239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc04f78dbcca5b34286e0e8dcb0dd7dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  androidAdUnitId: 
+  iosAdUnitId: 
+--- !u!114 &1659762242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659762239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b79460d3b30a2441a97f117287d04e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  androidGameId: 
+  iosGameId: 
+  isTesting: 0
+--- !u!114 &1659762243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659762239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df83e678e398e541b3a3a7aad4fe670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  androidAdUnitId: 
+  iosAdUnitId: 
+--- !u!114 &1659762244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659762239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ca408c480d3e6408d905ce3e908b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initializedAds: {fileID: 1659762242}
+  bannerAds: {fileID: 1659762243}
+  IntertistialAds: {fileID: 1659762241}
+  rewardsAds: {fileID: 1659762240}
+--- !u!4 &1659762245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659762239}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 213.8617, y: 580.9583, z: -7.405574}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1663398565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16139,6 +16248,7 @@ GameObject:
   - component: {fileID: 1817659010}
   - component: {fileID: 1817659018}
   - component: {fileID: 1817659013}
+  - component: {fileID: 1817659019}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -16263,6 +16373,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &1817659019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817659009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b79460d3b30a2441a97f117287d04e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  androidGameId: 
+  iosGameId: 
+  isTesting: 0
 --- !u!1001 &1826739733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19694,3 +19819,4 @@ SceneRoots:
   - {fileID: 986850136}
   - {fileID: 708609509}
   - {fileID: 1380687659}
+  - {fileID: 1659762245}
