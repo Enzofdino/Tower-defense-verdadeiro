@@ -14119,10 +14119,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1659762245}
   - component: {fileID: 1659762244}
-  - component: {fileID: 1659762242}
-  - component: {fileID: 1659762243}
-  - component: {fileID: 1659762241}
-  - component: {fileID: 1659762240}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -14130,63 +14126,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1659762240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659762239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27e3138bf8e30a6408818f1ce001042e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  androidAdUnitId: Rewarded_Android
-  iosAdUnitId: Rewarded_iOS
---- !u!114 &1659762241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659762239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc04f78dbcca5b34286e0e8dcb0dd7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  androidAdUnitId: Interstitial_Android
-  iosAdUnitId: Interstitial_iOS
---- !u!114 &1659762242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659762239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b79460d3b30a2441a97f117287d04e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  androidGameId: 5730311
-  iosGameId: 5730310
-  isTesting: 1
---- !u!114 &1659762243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659762239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df83e678e398e541b3a3a7aad4fe670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  androidAdUnitId: Banner_Android
-  iosAdUnitId: Banner_iOS
 --- !u!114 &1659762244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14199,10 +14138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ca408c480d3e6408d905ce3e908b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializedAds: {fileID: 1659762242}
-  bannerAds: {fileID: 1659762243}
-  IntertistialAds: {fileID: 1659762241}
-  rewardsAds: {fileID: 1659762240}
 --- !u!4 &1659762245
 Transform:
   m_ObjectHideFlags: 0
