@@ -8,8 +8,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb; // Rigidbody do inimigo
     [SerializeField] private float moveSpeed = 2f; // Velocidade de movimento do inimigo
-    [SerializeField] private int damageToBase = 10; // Dano causado à base
-
+    
     private Transform target; // Alvo atual
     private int pathIndex = 0; // Índice do caminho
     private float baseSpeed; // Velocidade base do inimigo
@@ -24,19 +23,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Vector2.Distance(target.position, transform.position) <= 0.1f) // Verifica se chegou ao alvo
         {
-            pathIndex++; // Avança para o próximo caminho
-
-            if (pathIndex == LevelManager.instance.path.Length) // Se chegou ao final do caminho
-            {
-                EnemySpawner.onEnemyDestroy.Invoke(); // Notifica que o inimigo foi destruído
-                DealDamageToBase(); // Causa dano à base
-                Destroy(gameObject); // Remove o inimigo da cena
-                return;
-            }
-            else
-            {
-                target = LevelManager.instance.path[pathIndex]; // Atualiza o alvo
-            }
+            AtualizarDestino();
+           
         }
     }
 
@@ -44,18 +32,25 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 direction = (target.position - transform.position).normalized; // Calcula a direção
         rb.velocity = direction * moveSpeed; // Move o inimigo
-   
+     
     
     }
 
-    private void DealDamageToBase() // Método para causar dano à base
+    protected virtual void AtualizarDestino()
     {
-        BaseHealth baseHealth = LevelManager.instance.startPoint.GetComponent<BaseHealth>(); // Obtém o componente BaseHealth da base
-        if (baseHealth != null)
+        pathIndex++; // Incrementa o índice do caminho
+        if (pathIndex >= LevelManager.instance.path.Length) // Verifica se chegou ao final do caminho
         {
-            baseHealth.TakeDamage(damageToBase); // Aplica o dano à base
+            LevelManager.instance.GameOver();
+            OnDestroy();
+
+        }
+        else
+        {
+            target = LevelManager.instance.path[pathIndex]; // Atualiza o alvo para o próximo ponto
         }
     }
+
 
     public void UpdateSpeed(float newSpeed) // Atualiza a velocidade do inimigo
     {
@@ -66,5 +61,12 @@ public class EnemyMovement : MonoBehaviour
     {
         moveSpeed = baseSpeed;
     }
- 
+
+    public void OnDestroy()
+    {
+        EnemySpawner.onEnemyDestroy.Invoke(); // Invoca evento de destruição do inimigo
+        Destroy(gameObject); // Destroi o objeto inimigo
+       
+    }
+
 }

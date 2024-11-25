@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
 
     private void Start() // Método inicial que configura o estado do jogo quando ele começa.
     {
-        currency = 500; // Define o valor inicial da moeda para o jogador em 100.
+        currency = 100; // Define o valor inicial da moeda para o jogador em 100.
     }
 
     public void IncreaseCurrency(int amount) // Método que aumenta o valor da moeda.
@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
     // Método para adicionar 100 moedas como recompensa
     public void RewardCurrency()
     {
-        int reward = Random.Range(100, 1000);
+        int reward = Random.Range(100, 500);
         IncreaseCurrency(reward);
         Debug.Log($"Você ganhou {reward} moedas!");
     }
@@ -65,6 +65,11 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
         {
             Time.timeScale = 0; // Apenas pausa o jogo se não estiver pausado por um anúncio
         }
+
+
+
+
+
 
     }
     public void Reiniciar()

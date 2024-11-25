@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Advertisements;
 using System.Collections;
+using UnityEngine.UI;
 
 public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsShowListener
 {
@@ -10,7 +11,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     private string interstitialAdId = "Interstitial_Android";
     private string bannerAdId = "Banner_Android"; // Verifique se este é o ID correto no painel do Unity Ads
     private string rewardedAdId = "Rewarded_Android"; // ID do anúncio recompensado
-    private string naoPulavelId = "noskip"; // ID do anúncio não pulável
+    private string dontskipId = "noskip"; // ID do anúncio não pulável
     private bool showInterstitialNext = true; // Controla qual tipo de anúncio será mostrado: intersticial ou não pulavel
 
     private Coroutine bannerLoopCoroutine; // Armazena a coroutine do BannerLoop
@@ -18,10 +19,9 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     private System.Action adCompletedAction; // Ação após a exibição do anúncio
     public bool isGamePausedByAd = false; // Indica se o jogo está pausado por causa de um anúncio
 
-
-    private delegate void gifts();
-    private gifts recompensa;
-    private gifts reviver;
+    // Delegate único para diferentes recompensas
+    public delegate void RewardAction();
+    private RewardAction rewardAction;
 
     private void Awake()
     {
@@ -31,8 +31,6 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     void Start()
     {
         InitializeAds();
-        recompensa = Recompensa;
-        reviver = Reviver;
     }
 
     private void InitializeAds()
@@ -97,21 +95,9 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
         Advertisement.Banner.Hide();
     }
 
-    private void Naopulavel()
+    private void donstskip()
     {
-        Advertisement.Show(naoPulavelId, this); // Exibe o anúncio não pulável
-    }
-
-    void Recompensa()
-    {
-        if (LevelManager.instance != null)
-        {
-            LevelManager.instance.RewardCurrency(); // Dá a recompensa ao jogador
-        }
-        else
-        {
-            Debug.LogError("LevelManager.main is null. Cannot reward currency.");
-        }
+        Advertisement.Show(dontskipId, this); // Exibe o anúncio que não pode ser pulado
     }
 
     public void ShowInterstitialAd()
@@ -125,18 +111,16 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
         isShowingInterstitial = true; // Define que o intersticial está sendo exibido
     }
 
-
-    public void ShowRewardedAd(System.Action actionAfterAd)
+    public void ShowRewardedAd(RewardAction action)
     {
         if (!isGamePausedByAd)
         {
             Time.timeScale = 0; // Pausa o tempo do jogo
             isGamePausedByAd = true; // Marca que o jogo está pausado por causa do anúncio
         }
-        adCompletedAction = actionAfterAd; // Armazena a ação que será executada após o anúncio
+        rewardAction = action; // Armazena a ação que será executada após o anúncio
         Advertisement.Show(rewardedAdId, this); // Exibe o anúncio recompensado
     }
-
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
@@ -144,7 +128,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
         {
             if (placementId == rewardedAdId)
             {
-                adCompletedAction?.Invoke(); // Executa a ação armazenada (Recompensa ou Reviver)
+                rewardAction?.Invoke(); // Executa a ação armazenada (pode ser qualquer tipo de recompensa)
             }
             else if (placementId == interstitialAdId)
             {
@@ -159,7 +143,6 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
             isGamePausedByAd = false; // Reseta o estado de pausa por anúncio
         }
     }
-
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
@@ -178,19 +161,34 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
         Advertisement.Banner.Show(bannerAdId); // Exibe o banner novamente após o clique
     }
 
-    public void Reviver()
-    {
-        LevelManager.instance.Reiniciar(); // Ação de reviver o jogador
-    }
-
     public void BotaoRecompensa()
     {
-        ShowRewardedAd(Recompensa); // Mostra o anúncio e dá a recompensa
+        ShowRewardedAd(() =>
+        {
+            if (LevelManager.instance != null)
+            {
+                LevelManager.instance.RewardCurrency(); // Dá a recompensa ao jogador
+            }
+            else
+            {
+                Debug.LogError("LevelManager.instance is null. Cannot reward currency.");
+            }
+        });
     }
 
     public void BotaoReviver()
     {
-        ShowRewardedAd(Reviver); // Passa o método Reviver para ser executado após o anúncio
+        ShowRewardedAd(() =>
+        {
+            if (LevelManager.instance != null)
+            {
+                LevelManager.instance.Reiniciar(); // Revive o jogador
+            }
+            else
+            {
+                Debug.LogError("LevelManager.instance is null. Cannot revive player.");
+            }
+        });
     }
 
     public void ShowNextAd()
@@ -201,7 +199,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
         }
         else
         {
-            Naopulavel();  // Mostra o anúncio não pulável
+            donstskip();  // Mostra o anúncio não pulável
         }
 
         // Alterna o tipo de anúncio para o próximo

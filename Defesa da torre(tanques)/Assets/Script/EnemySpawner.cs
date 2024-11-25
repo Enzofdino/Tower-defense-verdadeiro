@@ -80,6 +80,7 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
                        // Multiplica o modificador de saúde em vez de incrementá-lo
         currentHealthModifier *= healthIncreasePerWave;
         StartCoroutine(StartWave()); // Inicia a próxima onda após o período de espera.
+        AdManager.instance.ShowNextAd(); // Exibe o próximo anúncio
     }
 
     private void EnemyDestroyed() // Método chamado quando um inimigo é destruído.
@@ -108,19 +109,7 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
         }
     }
 
-    public void DealDamageIfReachedEnd(GameObject enemy)
-    {
-        if (Vector3.Distance(enemy.transform.position, endPoint.position) < 0.1f)
-        {
-            // Aplica dano à base
-            BaseHealth baseHealth = endPoint.GetComponent<BaseHealth>();
-            if (baseHealth != null)
-            {
-                baseHealth.TakeDamage(damageToBase);
-            }
-            Destroy(enemy); // Destrói o inimigo ao chegar ao final
-        }
-    }
+    
 
     private int EnemiesPerwave() // Calcula o número de inimigos para a onda atual com base na dificuldade.
     {
