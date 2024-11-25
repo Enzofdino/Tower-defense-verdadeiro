@@ -14138,6 +14138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ca408c480d3e6408d905ce3e908b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGamePausedByAd: 0
 --- !u!4 &1659762245
 Transform:
   m_ObjectHideFlags: 0
@@ -15951,7 +15952,7 @@ MonoBehaviour:
   - {fileID: 1861571200}
   - {fileID: 806961388}
   currency: 400
-  gameOver: {fileID: 1856949610}
+  gameOverPanel: {fileID: 1380687655}
 --- !u!4 &1817659011
 Transform:
   m_ObjectHideFlags: 0

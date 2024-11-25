@@ -11,7 +11,8 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
     public Transform[] path;    // Array contendo os pontos do caminho que o jogador ou objeto pode seguir.
    [SerializeField] public int currency;    // Quantidade de moeda ou pontos que o jogador possui.
 
-    public GameObject gameOver; // Tela de Game Over no inspector
+    public GameObject gameOverPanel; // Tela de Game Over no inspector
+    private bool isGameOver = false; // Para evitar chamadas repetidas do Game Over
 
     private void Awake()    // Método chamado antes do Start, para inicializar a instância global.
     {
@@ -42,12 +43,36 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
             return false; // Retorna falso se a transação falhou.
         }
     }
-    public void ShowGameOverScreen()
+    // Método para adicionar 100 moedas como recompensa
+    public void RewardCurrency()
     {
-        if (gameOver != null)
+        int reward = Random.Range(100, 1000);
+        IncreaseCurrency(reward);
+        Debug.Log($"Você ganhou {reward} moedas!");
+    }
+
+    public void GameOver()
+    {
+        if (isGameOver) return; // Evita que o Game Over seja chamado várias vezes
+
+        isGameOver = true; // Marca que o jogo terminou
+        Debug.Log("Game Over! Um inimigo alcançou o ponto final.");
+
+        // Exibe o painel de Game Over
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
+        if (!AdManager.instance.isGamePausedByAd)
         {
-            gameOver.SetActive(true); // Exibe a tela de Game Over
+            Time.timeScale = 0; // Apenas pausa o jogo se não estiver pausado por um anúncio
         }
-        Time.timeScale = 0; // Pausa o jogo ao exibir o Game Over
+
+    }
+    public void Reiniciar()
+    {
+        gameOverPanel.SetActive(false);
+        Time.timeScale = 1;
+        isGameOver = false;
+
     }
 }
+

@@ -35,6 +35,6 @@ public class BaseHealth : MonoBehaviour
     private void GameOver()
     {
         // Chama o método para exibir a tela de Game Over
-        LevelManager.instance.ShowGameOverScreen();
+        LevelManager.instance.GameOver();
     }
 }
