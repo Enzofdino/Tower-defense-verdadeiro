@@ -28,8 +28,7 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
 
     private int currentwave = 1; // Contador da onda atual.
     private float timesinceLastSpawn; // Tempo decorrido desde o último inimigo gerado.
-    [SerializeField] private int damageToBase = 10; // Dano causado à base
-    private int enemiesAlive; // Número de inimigos vivos atualmente no jogo.
+    private float enemiesAlive; // Número de inimigos vivos atualmente no jogo.
     private int enemiesLeftToSpawn; // Número de inimigos restantes para aparecer na onda atual.
     private bool isSpawning = false; // Controla se os inimigos estão sendo gerados.
     private float currentHealthModifier = 1.5f; // Modificador de saúde inicial (aumenta a cada onda).
@@ -39,10 +38,7 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
         instance = this;
         onEnemyDestroy.AddListener(EnemyDestroyed); // Adiciona o método EnemyDestroyed como ouvinte para o evento onEnemyDestroy.
     }
-    private void OnDestroy()
-    {
-        onEnemyDestroy.RemoveListener(EnemyDestroyed); // Remove o ouvinte para evitar problemas ao destruir.
-    }
+    
 
     private void Start() // Método inicial que configura o estado do jogo ao iniciar.
     {
@@ -75,7 +71,9 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
     private void Endwave() // Método para finalizar a onda atual.
     {
         isSpawning = false; // Para a geração de inimigos.
-        timesinceLastSpawn = 0f; // Reseta o tempo desde o último inimigo gerado.
+            timesinceLastSpawn = 0f; // Reseta o tempo desde o último inimigo gerado.
+        
+           
         currentwave++; // Incrementa o número da onda atual.
                        // Multiplica o modificador de saúde em vez de incrementá-lo
         currentHealthModifier *= healthIncreasePerWave;
@@ -85,7 +83,7 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
 
     private void EnemyDestroyed() // Método chamado quando um inimigo é destruído.
     {
-        enemiesAlive--; // Decrementa o contador de inimigos vivos.
+        enemiesAlive -= 0.5f;
     }
 
     private IEnumerator StartWave() // Coroutine que inicia uma nova onda após um tempo de espera.
