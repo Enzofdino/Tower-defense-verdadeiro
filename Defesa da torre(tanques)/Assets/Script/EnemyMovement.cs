@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Vector2.Distance(target.position, transform.position) <= 0.1f) // Verifica se chegou ao alvo
         {
-            AtualizarDestino();
+            Updatedestiny();
            
         }
     }
@@ -35,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
     
     }
 
-    protected virtual void AtualizarDestino()
+    protected virtual void Updatedestiny()
     {
         pathIndex++; // Incrementa o índice do caminho
         if (pathIndex >= LevelManager.instance.path.Length) // Verifica se chegou ao final do caminho
