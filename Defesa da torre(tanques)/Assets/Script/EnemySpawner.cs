@@ -16,7 +16,8 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
     [SerializeField] private float enemiesPerSecond = 0.5f; // Taxa de aparecimento dos inimigos por segundo.
     [SerializeField] private float timebetweenWaves = 5f; // Tempo de espera entre ondas de inimigos.
     [SerializeField] private float difficultyScallingFactor = 0.75f; // Fator de escala da dificuldade, aumentando o número de inimigos por onda.
-    [SerializeField] private float healthIncreasePerWave = 1.2f; // Fator de aumento de vida dos inimigos por onda.
+    [SerializeField] private float healthIncreasePerWave = 1.5f; // Fator de aumento de vida dos inimigos por onda.
+    [SerializeField] private float SpeedIncreasePerWave = 1.5f;
 
     public Transform spawnPoint;   // Ponto de spawn dos inimigos
     public Transform endPoint;     // Ponto final ou base
@@ -103,7 +104,9 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
         Health enemyHealth = enemy.GetComponent<Health>();
         if (enemyHealth != null)
         {
+            
             enemyHealth.hitPoints *= Mathf.Pow(healthIncreasePerWave, currentwave - 1);
+           
         }
     }
 

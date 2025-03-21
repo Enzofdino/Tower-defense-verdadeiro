@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public static Health instance;
+  
 
     private void Awake()
     {
@@ -22,9 +23,13 @@ public class Health : MonoBehaviour
         hitPoints -= dmg; // Reduz os pontos de vida pelo dano recebido
         if (hitPoints <= 0 && !isDestroyed)
         {
+          
+
             EnemySpawner.onEnemyDestroy.Invoke(); // Notifica que um inimigo foi destruído
+          
             LevelManager.instance.IncreaseCurrency(currencyWorth); // Aumenta a moeda do jogador
             isDestroyed = true; // Marca o inimigo como destruído
+           
             Destroy(gameObject); // Remove o inimigo da cena
         }
     }

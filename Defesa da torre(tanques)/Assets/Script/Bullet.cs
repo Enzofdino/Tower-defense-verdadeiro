@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public static Bullet instance;
+    public AudioClip somtiro;
     private void Awake()
     {
         instance = this;
@@ -29,18 +30,23 @@ public class Bullet : MonoBehaviour
     public void SetTarget(Transform _target)
     {
         target = _target; // Atribui o alvo recebido à variável target
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
     private void FixedUpdate()
     {
         // Se não houver um alvo, não faz nada
         if (!target) return;
+      
 
         // Calcula a direção em que a bala deve se mover em relação ao seu alvo
         Vector2 direction = (target.position - transform.position).normalized;
 
         // Aplica a velocidade à bala, movendo-a em direção ao alvo
         rb.velocity = direction * bulletSpeed;
+        
+      
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)

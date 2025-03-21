@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    static public EnemyMovement instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
     [SerializeField] private Rigidbody2D rb; // Rigidbody do inimigo
-    [SerializeField] private float moveSpeed = 2f; // Velocidade de movimento do inimigo
+    [SerializeField] public float moveSpeed = 2f; // Velocidade de movimento do inimigo
     
     private Transform target; // Alvo atual
     private int pathIndex = 0; // Índice do caminho
@@ -63,6 +69,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void OnDestroy()
     {
+        
         EnemySpawner.onEnemyDestroy.Invoke(); // Invoca evento de destruição do inimigo
         Destroy(gameObject); // Destroi o objeto inimigo
        
