@@ -71,6 +71,7 @@
     <Compile Include="Assets\Script\Health.cs" />
     <Compile Include="Assets\Script\EnemySpawner.cs" />
     <Compile Include="Assets\Script\Turret.cs" />
+    <Compile Include="Assets\Script\PlayerCamera.cs" />
     <Compile Include="Assets\Script\Iatacavel.cs" />
     <Compile Include="Assets\Script\LevelManager.cs" />
     <Compile Include="Assets\ScriptLobby\LobbyManager.cs" />
