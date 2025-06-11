@@ -1,37 +1,39 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public static Bullet instance;
-    public AudioClip somtiro;
+
     private void Awake()
     {
         instance = this;
     }
+
     [Header("References")]
-    [SerializeField] private Rigidbody2D rb; // ReferÍncia ao Rigidbody2D da bala
+    [SerializeField] private Rigidbody2D rb; // Rigidbody da bala
+    [SerializeField] private AudioClip somtiro;
 
     [Header("Attributes")]
-    [SerializeField] private float bulletSpeed = 5f; // Velocidade da bala
-    [SerializeField] public float bulletdamage = 1f; // Dano causado pela bala
-    [SerializeField] private float lifetime = 5f; // Tempo de vida da bala antes de ser destruÌda
-   
+    [SerializeField] private float bulletSpeed = 5f;
+    [SerializeField] public float bulletdamage = 1f;
+    
+    [SerializeField] private float lifetime = 5f;
 
-
-    private Transform target; // Alvo que a bala deve seguir
+    private Vector2 direction; // Dire√ß√£o fixa da bala ap√≥s disparo
 
     private void Start()
     {
-        // DestrÛi a bala apÛs um tempo definido para evitar que fique na cena indefinidamente
-        Destroy(gameObject, lifetime);
+        Destroy(gameObject, lifetime); // Destroi ap√≥s certo tempo
+        rb.velocity = direction * bulletSpeed; // Inicia movimento j√° com a dire√ß√£o definida
     }
 
-    // MÈtodo para definir o alvo da bala
+    // M√©todo chamado no disparo para definir a dire√ß√£o e tocar o som
     public void SetTarget(Transform _target)
     {
-        target = _target;
+        // Calcula a dire√ß√£o uma √∫nica vez no momento do disparo
+        direction = (_target.position - transform.position).normalized;
 
         AudioSource audio = GetComponent<AudioSource>();
         if (audio != null && somtiro != null)
@@ -40,32 +42,14 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        // Se n„o houver um alvo, n„o faz nada
-        if (!target) return;
-      
-
-        // Calcula a direÁ„o em que a bala deve se mover em relaÁ„o ao seu alvo
-        Vector2 direction = (target.position - transform.position).normalized;
-
-        // Aplica a velocidade ‡ bala, movendo-a em direÁ„o ao alvo
-        rb.velocity = direction * bulletSpeed;
-        
-      
-
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // Tenta obter o componente Health do objeto com o qual a bala colidiu
+        // Tenta aplicar dano se o objeto tiver o script Health
         Health enemyHealth = other.gameObject.GetComponent<Health>();
-
         if (enemyHealth != null)
         {
             enemyHealth.TakeDamage(bulletdamage);
 
-            // Faz o inimigo piscar em vermelho
             EnemyMovement enemyMovement = other.gameObject.GetComponent<EnemyMovement>();
             if (enemyMovement != null)
             {
@@ -73,9 +57,6 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        // DestrÛi a bala apÛs colidir com qualquer objeto
-        Destroy(gameObject);
+        Destroy(gameObject); // Destr√≥i a bala ap√≥s a colis√£o
     }
-
-
 }

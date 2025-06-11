@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour // Classe responsável por gerenciar o 
 
     private void Start() // Método inicial que configura o estado do jogo quando ele começa.
     {
-        currency = 100; // Define o valor inicial da moeda para o jogador em 100.
+        currency = 500; // Define o valor inicial da moeda para o jogador em 100.
     }
 
     public void IncreaseCurrency(int amount) // Método que aumenta o valor da moeda.

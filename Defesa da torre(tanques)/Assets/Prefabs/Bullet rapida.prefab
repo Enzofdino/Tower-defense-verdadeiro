@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1519452509
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9254902, g: 0.6512877, b: 0.039215688, a: 1}
   m_FlipX: 0
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -164,11 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af1d6cda7a65d8a4ebc7f962d67a1cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  somtiro: {fileID: 0}
   rb: {fileID: 6973984670720207935}
-  bulletSpeed: 5
+  somtiro: {fileID: 8300000, guid: 9aa619e52d6ad0e4996bc5cb8dc34ab5, type: 3}
+  bulletSpeed: 15
   bulletdamage: 1
-  lifetime: 5
+  lifetime: 10
 --- !u!82 &1731839058398001803
 AudioSource:
   m_ObjectHideFlags: 0
