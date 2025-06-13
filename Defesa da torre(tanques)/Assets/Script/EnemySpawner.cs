@@ -4,10 +4,12 @@ using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using Unity.Netcode;
+
 
 public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de inimigos no jogo, aumentando a dificuldade em ondas.
 {
-    public static EnemySpawner instance; 
+    public static EnemySpawner instance;
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs; // Array de prefabs de inimigos a serem instanciados.
 
@@ -39,7 +41,7 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
         instance = this;
         onEnemyDestroy.AddListener(EnemyDestroyed); // Adiciona o método EnemyDestroyed como ouvinte para o evento onEnemyDestroy.
     }
-    
+
 
     private void Start() // Método inicial que configura o estado do jogo ao iniciar.
     {
@@ -48,7 +50,9 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
 
     private void Update() // Chamado a cada quadro para atualizar o estado da criação de inimigos.
     {
-        if (!isSpawning) return; // Se não for o momento de gerar inimigos, retorna.
+        
+    
+        if (!isSpawning || !NetworkManager.Singleton.IsServer) return;
 
         timesinceLastSpawn += Time.deltaTime; // Atualiza o tempo desde a última geração de inimigos.
 
@@ -64,7 +68,7 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
         // Se não restam inimigos para gerar e todos os inimigos foram destruídos, termina a onda.
         if (enemiesLeftToSpawn == 0 && enemiesAlive == 0)
         {
-           
+
             Endwave(); // Finaliza a onda atual e prepara para a próxima.
         }
     }
@@ -72,9 +76,9 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
     private void Endwave() // Método para finalizar a onda atual.
     {
         isSpawning = false; // Para a geração de inimigos.
-            timesinceLastSpawn = 0f; // Reseta o tempo desde o último inimigo gerado.
-        
-           
+        timesinceLastSpawn = 0f; // Reseta o tempo desde o último inimigo gerado.
+
+
         currentwave++; // Incrementa o número da onda atual.
                        // Multiplica o modificador de saúde em vez de incrementá-lo
         currentHealthModifier *= healthIncreasePerWave;
@@ -92,25 +96,33 @@ public class EnemySpawner : MonoBehaviour // Classe que gerencia a criação de in
         yield return new WaitForSeconds(timebetweenWaves); // Aguarda o tempo definido entre ondas.
         isSpawning = true; // Ativa a geração de inimigos.
         enemiesLeftToSpawn = EnemiesPerwave(); // Calcula o número de inimigos a serem gerados na onda atual.
-      
+
     }
 
-    private void SpawnEnemy() // Método para gerar um inimigo.
+    private void SpawnEnemy()
     {
-        GameObject prefabToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]; // Escolhe um prefab aleatório da lista de inimigos.
-        GameObject enemy = Instantiate(prefabToSpawn, LevelManager.instance.startPoint.position, Quaternion.identity); // Instancia o inimigo na posição inicial definida no LevelManager.
+        GameObject prefabToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+
+        GameObject enemy = Instantiate(prefabToSpawn, LevelManager.instance.startPoint.position, Quaternion.identity);
+
+        NetworkObject netObj = enemy.GetComponent<NetworkObject>();
+        if (netObj != null && NetworkManager.Singleton.IsServer)
+        {
+            netObj.Spawn(); // Torna o inimigo visível para todos os clientes
+        }
 
         // Aumenta a vida do inimigo de acordo com o modificador atual
         Health enemyHealth = enemy.GetComponent<Health>();
         if (enemyHealth != null)
         {
-            
             enemyHealth.hitPoints *= Mathf.Pow(healthIncreasePerWave, currentwave - 1);
-           
         }
     }
 
-    
+
+
+
+
 
     private int EnemiesPerwave() // Calcula o número de inimigos para a onda atual com base na dificuldade.
     {

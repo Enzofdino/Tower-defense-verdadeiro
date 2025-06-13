@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -3601082527770161515}
   - component: {fileID: -3082478142397729100}
   - component: {fileID: 8809294556062584925}
+  - component: {fileID: 4339938728014952921}
   m_Layer: 7
   m_Name: Enemy invisible
   m_TagString: Untagged
@@ -299,7 +300,7 @@ MonoBehaviour:
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
+  DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
 --- !u!114 &8809294556062584925
 MonoBehaviour:
@@ -332,3 +333,15 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &4339938728014952921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675394911236619152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2674520756555136031}
   - component: {fileID: 2157627783606081784}
   - component: {fileID: 1086803787137550543}
+  - component: {fileID: 7089863883248854645}
   m_Layer: 6
   m_Name: FastEnemy
   m_TagString: Untagged
@@ -299,7 +300,7 @@ MonoBehaviour:
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
+  DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
 --- !u!114 &1086803787137550543
 MonoBehaviour:
@@ -332,3 +333,15 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &7089863883248854645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517002185830460437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

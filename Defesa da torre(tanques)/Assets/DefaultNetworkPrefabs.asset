@@ -14,8 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDefault: 1
   List:
-  - Override: 0
+  - Override: 1
     Prefab: {fileID: 8114808619467536352, guid: 4cd7e78ba31eda5488b059c612d4d1c3, type: 3}
     SourcePrefabToOverride: {fileID: 0}
     SourceHashToOverride: 0
-    OverridingTargetPrefab: {fileID: 0}
+    OverridingTargetPrefab: {fileID: 8114808619467536352, guid: 4cd7e78ba31eda5488b059c612d4d1c3, type: 3}
+  - Override: 1
+    Prefab: {fileID: 5238293559354443362, guid: 6e79789f033574940b30d989164a5eb4, type: 3}
+    SourcePrefabToOverride: {fileID: 0}
+    SourceHashToOverride: 0
+    OverridingTargetPrefab: {fileID: 5238293559354443362, guid: 6e79789f033574940b30d989164a5eb4, type: 3}
+  - Override: 1
+    Prefab: {fileID: 5238293559354443362, guid: 2486647f4410bfb448575b743f3aca59, type: 3}
+    SourcePrefabToOverride: {fileID: 0}
+    SourceHashToOverride: 0
+    OverridingTargetPrefab: {fileID: 5238293559354443362, guid: 2486647f4410bfb448575b743f3aca59, type: 3}
+  - Override: 1
+    Prefab: {fileID: 5238293559354443362, guid: f45a60789669de2408234b37b0d9dff8, type: 3}
+    SourcePrefabToOverride: {fileID: 0}
+    SourceHashToOverride: 0
+    OverridingTargetPrefab: {fileID: 1675394911236619152, guid: 0577f01c15d65dc409a08aa41d75b3bf, type: 3}
+  - Override: 1
+    Prefab: {fileID: 1675394911236619152, guid: 0577f01c15d65dc409a08aa41d75b3bf, type: 3}
+    SourcePrefabToOverride: {fileID: 0}
+    SourceHashToOverride: 0
+    OverridingTargetPrefab: {fileID: 5238293559354443362, guid: f45a60789669de2408234b37b0d9dff8, type: 3}
+  - Override: 1
+    Prefab: {fileID: 4517002185830460437, guid: 1d89b33dacb03e946923815177b5b234, type: 3}
+    SourcePrefabToOverride: {fileID: 0}
+    SourceHashToOverride: 0
+    OverridingTargetPrefab: {fileID: 4517002185830460437, guid: 1d89b33dacb03e946923815177b5b234, type: 3}
+  - Override: 1
+    Prefab: {fileID: 5238140823905222600, guid: dceb3009ed6c2a040be9bf3188511a3b, type: 3}
+    SourcePrefabToOverride: {fileID: 0}
+    SourceHashToOverride: 0
+    OverridingTargetPrefab: {fileID: 5238140823905222600, guid: dceb3009ed6c2a040be9bf3188511a3b, type: 3}

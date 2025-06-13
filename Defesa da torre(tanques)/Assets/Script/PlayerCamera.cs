@@ -22,20 +22,19 @@ public class PlayerCamera : NetworkBehaviour
     {
         if (!IsOwner)
         {
-            // Destrói apenas os elementos de interface e câmera dos jogadores que não são o dono do objeto
+            // Destrói apenas os elementos que devem ser exclusivos do jogador local
             if (hudCanvas != null) Destroy(hudCanvas.gameObject);
             if (gameOverCanvas != null) Destroy(gameOverCanvas.gameObject);
             if (playerCamera != null) Destroy(playerCamera.gameObject);
         }
         else
         {
-            // Se for o dono, inicia normalmente
+            // Inicializações do jogador local
             GetComponent<Rigidbody>().isKinematic = true;
             Invoke(nameof(AlteraPos), 5f);
         }
-
-        base.OnNetworkSpawn();
     }
+
 
     void AlteraPos()
     {
@@ -47,8 +46,12 @@ public class PlayerCamera : NetworkBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        Vector3 respawnPosition = new Vector3(0, 10, 0);
-        GameObject newPlayer = Instantiate(gameObject, respawnPosition, Quaternion.identity);
-        newPlayer.GetComponent<NetworkObject>().SpawnAsPlayerObject(OwnerClientId);
+        if (IsServer) // Apenas o servidor pode spawnar jogadores
+        {
+            Vector3 respawnPosition = new Vector3(0, 10, 0);
+            GameObject newPlayer = Instantiate(NetworkManager.Singleton.NetworkConfig.PlayerPrefab, respawnPosition, Quaternion.identity);
+            newPlayer.GetComponent<NetworkObject>().SpawnAsPlayerObject(OwnerClientId);
+        }
     }
+
 }
